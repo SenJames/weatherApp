@@ -22,7 +22,7 @@ function App() {
   const APIKEY = process.env.REACT_APP_API_KEY
 
   const makeCall =(lon, lat)=>{
-    const url = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIKEY}`
+    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIKEY}`
     console.log(lon," ", lat)
 
         axios.get(url).then((response) => {
