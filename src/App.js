@@ -1,9 +1,7 @@
-import logo from './logo.svg';
 import './App.css';
 import Mainview from './components/Mainview';
 import Side from './components/Side';
 import { useState, useEffect } from 'react'
-import APIKEY from './components/Side';
 import axios from "axios";
 
 

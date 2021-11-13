@@ -1,6 +1,4 @@
-import React, { useEffect } from 'react'
 import { BsCloudRainHeavy } from "react-icons/bs";
-import { useState } from 'react';
 
 
 
