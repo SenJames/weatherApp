@@ -6,8 +6,8 @@ import { useState } from 'react';
 
 const Mainview = ({ color, details, loc }) => {
     // console.log(details)
-    const weathIcon = `http://openweathermap.org/img/w/${details.weather && details.weather[0].icon}.png`
-    const weathIconUser = `http://openweathermap.org/img/w/${loc.weather && loc.weather[0].icon}.png`
+    const weathIcon = `https://openweathermap.org/img/w/${details.weather && details.weather[0].icon}.png`
+    const weathIconUser = `https://openweathermap.org/img/w/${loc.weather && loc.weather[0].icon}.png`
 
     const d = new Date()
     const localTime = d.getTime()

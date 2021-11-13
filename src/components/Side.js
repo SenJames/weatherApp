@@ -21,7 +21,7 @@ const Side = ({ receiveDate, loc }) => {
             alert("Please enter location")
         }
         
-        const url = `http://api.openweathermap.org/data/2.5/weather?q=${val}&appid=${APIKEY}`
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${val}&appid=${APIKEY}`
 
         axios.get(url).then((response) => {
             setWeather(response.data);
