@@ -8,10 +8,11 @@ import axios from "axios";
 function App() {
   const [val, setVal] = useState([])
   const [location, setlocation] = useState([])
-  const [status, setStatus] = useState(null)
+  const [status, setStatus] = useState(false)
 
 
-  const receiveDate = (weather) => {
+  const receiveDate = (weather, status) => {
+    setStatus(status)
     setVal(weather)
 
   }
@@ -33,7 +34,7 @@ function App() {
   useEffect(() => {
     const getPresentLocation = () => {
       if (!navigator.geolocation) {
-        setStatus('Geolocation is not supported by your browser');
+        setStatus(false);
         const url = `https://jweatherapp.herokuapp.com/open/test/lagos`
 
         axios.get(url).then((response) => {
@@ -42,13 +43,12 @@ function App() {
            console.log(error)
           });
       } else {
-        setStatus('Locating...');
         navigator.geolocation.getCurrentPosition((position) => {
-          setStatus(null);
+          setStatus(false);
           makeCall(position.coords.longitude, position.coords.latitude)
           
         }, () => {
-          setStatus('Unable to retrieve your location');
+          setStatus(false);
         });
       }
     }
@@ -59,7 +59,7 @@ function App() {
   return (
     <div className="App">
       <section className='main'>
-        <div className='left' style={{backgroundImage: val.length > 0 ? `url(${val['unsplash']})`: location && `url(${location['unsplash']})` }}>
+        <div className='left' style={{backgroundImage: status === true  ? `url(${val['unsplash']})`: `url(${location['unsplash']})` }}>
           <p className="webName">jamie.weather</p>
         <div className="bottomview">
           <Mainview color="white"  loc={location} details={val.name === ""  ? {} : val}/>
