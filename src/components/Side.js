@@ -9,6 +9,7 @@ const Side = ({ receiveDate, loc }) => {
 
     const [val, setValue] = useState("")
     const [weather, setWeather] = useState([])
+    const [status, setStatus ] = useState(false)
     
     // API CALL
 
@@ -29,6 +30,7 @@ const Side = ({ receiveDate, loc }) => {
            console.log(error)
           });
         setValue("")
+        setStatus(true)
     }
 
 
@@ -36,7 +38,7 @@ const Side = ({ receiveDate, loc }) => {
 
     return (
         <div className="side">
-            <form className="formClass" onSubmit={onSubmit} onClick={receiveDate(weather)}>
+            <form className="formClass" onSubmit={onSubmit} onClick={receiveDate(weather, status)}>
                 <div className="searchdets">                       
                     <input type="text" value={val}  onChange={(e)=>{setValue(e.target.value)}} placeholder="Another Location"/>
                     <button type="submit" className="search">
@@ -63,7 +65,7 @@ const Side = ({ receiveDate, loc }) => {
                             <p className="weather_cond">Humidity</p>
                             <p className="weather_percent">{loc.main ? `${loc.main.humidity}%` : "None"}</p>
                             <p className="weather_cond">Wind</p>
-                            <p className="weather_percent">{loc.wind ? `${loc.wind.speed}km/h` : "None"}</p>
+                            <p className="weather_percent">{loc.wind ? `${loc.wind}km/h` : "None"}</p>
                             <p className="weather_cond">Rain</p>
                             <p className="weather_percent">{loc.rain ? `${loc.rain["1h"]}mm` : "None"}</p>
                         </div>
@@ -74,7 +76,7 @@ const Side = ({ receiveDate, loc }) => {
                             <p className="weather_cond">Humidity</p>
                             <p className="weather_percent">{weather.main.humidity}%</p>
                             <p className="weather_cond">Wind</p>
-                            <p className="weather_percent">{weather.wind.speed}km/h</p>
+                            <p className="weather_percent">{weather.wind}km/h</p>
                             <p className="weather_cond">Rain</p>
                             <p className="weather_percent">{weather.rain && weather.rain['1h']}mm</p>
                         </div>
