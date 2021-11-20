@@ -21,7 +21,7 @@ const Side = ({ receiveDate, loc }) => {
         }
         
         // const url = `https://api.openweathermap.org/data/2.5/weather?q=${val}&appid=${APIKEY}`
-        const url = `http://127.0.0.1:8000/open/test/${val}`
+        const url = `https://jweatherapp.herokuapp.com/open/test/${val}`
 
         axios.get(url).then((response) => {
             setWeather(response.data['data']);

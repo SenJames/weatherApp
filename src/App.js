@@ -20,7 +20,7 @@ function App() {
 
   const makeCall =(lon, lat)=>{
     // const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIKEY}`
-    const url = `http://127.0.0.1:8000/open/test/${lat}/${lon}`
+    const url = `https://jweatherapp.herokuapp.com/open/test/${lat}/${lon}`
     console.log(lon," ", lat)
 
         axios.get(url).then((response) => {
@@ -34,7 +34,7 @@ function App() {
     const getPresentLocation = () => {
       if (!navigator.geolocation) {
         setStatus('Geolocation is not supported by your browser');
-        const url = `http://127.0.0.1:8000/open/test/lagos`
+        const url = `https://jweatherapp.herokuapp.com/open/test/lagos`
 
         axios.get(url).then((response) => {
             setlocation(response.data['data']);
