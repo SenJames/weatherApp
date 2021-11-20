@@ -63,7 +63,7 @@ const Side = ({ receiveDate, loc }) => {
                             <p className="weather_cond">Humidity</p>
                             <p className="weather_percent">{loc.main ? `${loc.main.humidity}%` : "None"}</p>
                             <p className="weather_cond">Wind</p>
-                            <p className="weather_percent">{loc.wind ? `${loc.wind.speed}km/h` : "None"}</p>
+                            <p className="weather_percent">{loc.wind ? `${loc.wind}km/h` : "None"}</p>
                             <p className="weather_cond">Rain</p>
                             <p className="weather_percent">{loc.rain ? `${loc.rain["1h"]}mm` : "None"}</p>
                         </div>
