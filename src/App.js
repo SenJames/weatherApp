@@ -17,14 +17,14 @@ function App() {
   }
 
 
-  const APIKEY = process.env.REACT_APP_API_KEY
 
   const makeCall =(lon, lat)=>{
-    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIKEY}`
+    // const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIKEY}`
+    const url = `http://127.0.0.1:8000/open/test/${lat}/${lon}`
     console.log(lon," ", lat)
 
         axios.get(url).then((response) => {
-            setlocation(response.data);
+            setlocation(response.data['data']);
           }).catch(error => {
            console.log(error)
           });
@@ -34,6 +34,13 @@ function App() {
     const getPresentLocation = () => {
       if (!navigator.geolocation) {
         setStatus('Geolocation is not supported by your browser');
+        const url = `http://127.0.0.1:8000/open/test/lagos`
+
+        axios.get(url).then((response) => {
+            setlocation(response.data['data']);
+          }).catch(error => {
+           console.log(error)
+          });
       } else {
         setStatus('Locating...');
         navigator.geolocation.getCurrentPosition((position) => {
@@ -48,12 +55,11 @@ function App() {
     getPresentLocation()
     
   }, [])
-  
 
   return (
     <div className="App">
       <section className='main'>
-        <div className='left'>
+        <div className='left' style={{backgroundImage: val.length > 0 ? `url(${val['unsplash']})`: location && `url(${location['unsplash']})` }}>
           <p className="webName">jamie.weather</p>
         <div className="bottomview">
           <Mainview color="white"  loc={location} details={val.name === ""  ? {} : val}/>

@@ -11,7 +11,6 @@ const Side = ({ receiveDate, loc }) => {
     const [weather, setWeather] = useState([])
     
     // API CALL
-    const APIKEY = process.env.REACT_APP_API_KEY
 
 
     const onSubmit = (e)=>{
@@ -21,10 +20,11 @@ const Side = ({ receiveDate, loc }) => {
             alert("Please enter location")
         }
         
-        const url = `https://api.openweathermap.org/data/2.5/weather?q=${val}&appid=${APIKEY}`
+        // const url = `https://api.openweathermap.org/data/2.5/weather?q=${val}&appid=${APIKEY}`
+        const url = `http://127.0.0.1:8000/open/test/${val}`
 
         axios.get(url).then((response) => {
-            setWeather(response.data);
+            setWeather(response.data['data']);
           }).catch(error => {
            console.log(error)
           });

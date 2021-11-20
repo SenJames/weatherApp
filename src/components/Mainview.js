@@ -4,8 +4,8 @@ import { BsCloudRainHeavy } from "react-icons/bs";
 
 const Mainview = ({ color, details, loc }) => {
     // console.log(details)
-    const weathIcon = `https://openweathermap.org/img/w/${details.weather && details.weather[0].icon}.png`
-    const weathIconUser = `https://openweathermap.org/img/w/${loc.weather && loc.weather[0].icon}.png`
+    const weathIcon = (details.weather && details['icon'])
+    const weathIconUser = (loc.weather && loc['icon'])
 
     const d = new Date()
     const localTime = d.getTime()
@@ -15,6 +15,7 @@ const Mainview = ({ color, details, loc }) => {
     const userLocationOffset = loc.timezone
     const newDate = utc + (1000 * OpenApiOffset ? OpenApiOffset :userLocationOffset)
     const end = new Date(newDate)
+
 
     return (
         <div className="main-view" style={{'color':color}}>
